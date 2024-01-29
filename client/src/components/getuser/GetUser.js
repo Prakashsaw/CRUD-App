@@ -10,7 +10,7 @@ const GetUser = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `http://localhost:8080/api/v1/users/get-all-users`
+        `https://crud-app-7c3d.onrender.com/api/v1/users/get-all-users`
       );
       setUsers(res.data.users);
     };
@@ -19,7 +19,7 @@ const GetUser = () => {
 
   const deleteUserHandler = async (id) => {
     await axios
-      .delete(`http://localhost:8080/api/v1/users/delete/${id}`)
+      .delete(`https://crud-app-7c3d.onrender.com/api/v1/users/delete/${id}`)
       .then((res) => {
         setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
         toast.success(res.data.message, { position: "top-center" });

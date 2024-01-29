@@ -23,7 +23,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/users/get-one-user/${id}`)
+      .get(`https://crud-app-7c3d.onrender.com/api/v1/users/get-one-user/${id}`)
       .then((res) => {
         // console.log(res.data);
         setUser(res.data.user);
@@ -36,7 +36,7 @@ const UpdateUser = () => {
   const submitFormHandler = async (e) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:8080/api/v1/users/update/${id}`, user)
+      .put(`https://crud-app-7c3d.onrender.com/api/v1/users/update/${id}`, user)
       .then((res) => {
         toast.success(res.data.message, { position: "top-center" });
         // console.log(res.data);

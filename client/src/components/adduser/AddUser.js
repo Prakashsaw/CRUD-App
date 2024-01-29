@@ -27,15 +27,16 @@ const AddUser = () => {
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/v1/users/create`, user)
-    .then((res) => {
-      console.log(res.data);
-      toast.success(res.data.message, {position: "top-center"});
-      navigate("/");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    await axios
+      .post(`https://crud-app-7c3d.onrender.com/api/v1/users/create`, user)
+      .then((res) => {
+        console.log(res.data);
+        toast.success(res.data.message, { position: "top-center" });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
