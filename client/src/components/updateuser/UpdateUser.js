@@ -30,21 +30,28 @@ const UpdateUser = () => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Something went wrong. Can't be fetch deta...!", {
+          position: "top-center",
+        });
       });
   }, [id]);
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
-    await axios
-      .put(`https://crud-app-7c3d.onrender.com/api/v1/users/update/${id}`, user)
-      .then((res) => {
-        toast.success(res.data.message, { position: "top-center" });
-        // console.log(res.data);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const res = await axios.put(
+        `https://crud-app-7c3d.onrender.com/api/v1/users/update/${id}`,
+        user
+      );
+      toast.success(res.data.message, { position: "top-center" });
+      // console.log(res.data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong. Can't be update...!", {
+        position: "top-center",
       });
+    }
   };
 
   return (
@@ -56,7 +63,7 @@ const UpdateUser = () => {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            value={user.name} 
+            value={user.name}
             id="name"
             name="name"
             autoComplete="off"

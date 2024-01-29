@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "./AddUser.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import toast  from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const AddUser = () => {
-
   const users = {
     name: "",
     email: "",
     phone: "",
     address: "",
   };
-  
+
   const [user, setUser] = useState(users);
   const navigate = useNavigate();
 
@@ -23,21 +22,25 @@ const AddUser = () => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
      */
-  }
+  };
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
-    await axios
-      .post(`https://crud-app-7c3d.onrender.com/api/v1/users/create`, user)
-      .then((res) => {
-        console.log(res.data);
-        toast.success(res.data.message, { position: "top-center" });
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const res = await axios.post(
+        `https://crud-app-7c3d.onrender.com/api/v1/users/create`,
+        user
+      );
+      console.log(res.data);
+      toast.success(res.data.message, { position: "top-center" });
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong...!", {
+        position: "top-center",
       });
-  }
+    }
+  };
 
   return (
     <div className="addUser">

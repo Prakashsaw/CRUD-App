@@ -9,26 +9,39 @@ const GetUser = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(
-        `https://crud-app-7c3d.onrender.com/api/v1/users/get-all-users`
-      );
-      setUsers(res.data.users);
+      try {
+        const res = await axios.get(
+          `https://crud-app-7c3d.onrender.com/api/v1/users/get-all-users`
+        );
+        console.log(res.data);
+        toast.success(res.data.message, { position: "top-center" });
+        setUsers(res.data.users);
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong. Can't be fetch users...!", {
+          position: "top-center",
+        });
+      }
     };
     fetchData();
   }, []);
 
   const deleteUserHandler = async (id) => {
-    await axios
-      .delete(`https://crud-app-7c3d.onrender.com/api/v1/users/delete/${id}`)
-      .then((res) => {
-        setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
-        toast.success(res.data.message, { position: "top-center" });
-        console.log(res.data);
-        // window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const res = await axios.delete(
+        `https://crud-app-7c3d.onrender.com/api/v1/users/delete/${id}`
+      );
+      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+      toast.success("User deleted successfully...!", {
+        position: "top-center",
       });
+      // console.log(res.data);
+    } catch (error) {
+      // console.log(error);
+      toast.error("Something went wrong. Can't be delete user...!", {
+        position: "top-center",
+      });
+    }
   };
 
   return (
