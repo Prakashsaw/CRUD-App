@@ -81,6 +81,7 @@ const UpdateUser = () => {
             autoComplete="off"
             placeholder="Enter email"
             onChange={inputChangeHandler}
+            disabled = "true"
           />
         </div>
         <div className="inputGroup">

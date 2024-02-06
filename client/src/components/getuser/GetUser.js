@@ -31,7 +31,9 @@ const GetUser = () => {
       const res = await axios.delete(
         `https://crud-app-7c3d.onrender.com/api/v1/users/delete/${id}`
       );
+      console.log(res);
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+
       toast.success("User deleted successfully...!", {
         position: "top-center",
       });
