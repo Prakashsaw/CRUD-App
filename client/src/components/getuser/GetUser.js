@@ -3,6 +3,7 @@ import "./GetUser.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../utils/baseURL";
 
 const GetUser = () => {
   const [users, setUsers] = useState([]);
@@ -10,9 +11,7 @@ const GetUser = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `https://crud-app-7c3d.onrender.com/api/v1/users/get-all-users`
-        );
+        const res = await axios.get(`${BASE_URL}api/v1/users/get-all-users`);
         console.log(res.data);
         toast.success(res.data.message, { position: "top-center" });
         setUsers(res.data.users);
@@ -28,9 +27,7 @@ const GetUser = () => {
 
   const deleteUserHandler = async (id) => {
     try {
-      const res = await axios.delete(
-        `https://crud-app-7c3d.onrender.com/api/v1/users/delete/${id}`
-      );
+      const res = await axios.delete(`${BASE_URL}api/v1/users/delete/${id}`);
       console.log(res);
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
 

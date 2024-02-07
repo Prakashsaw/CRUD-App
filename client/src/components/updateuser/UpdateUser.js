@@ -3,6 +3,7 @@ import "../adduser/AddUser.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../utils/baseURL";
 
 const UpdateUser = () => {
   const users = {
@@ -23,7 +24,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`https://crud-app-7c3d.onrender.com/api/v1/users/get-one-user/${id}`)
+      .get(`${BASE_URL}api/v1/users/get-one-user/${id}`)
       .then((res) => {
         // console.log(res.data);
         setUser(res.data.user);
@@ -39,10 +40,7 @@ const UpdateUser = () => {
   const submitFormHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
-        `https://crud-app-7c3d.onrender.com/api/v1/users/update/${id}`,
-        user
-      );
+      const res = await axios.put(`${BASE_URL}api/v1/users/update/${id}`, user);
       toast.success(res.data.message, { position: "top-center" });
       // console.log(res.data);
       navigate("/");

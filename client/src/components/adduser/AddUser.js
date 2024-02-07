@@ -3,6 +3,7 @@ import "./AddUser.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../utils/baseURL";
 
 const AddUser = () => {
   const users = {
@@ -27,10 +28,7 @@ const AddUser = () => {
   const submitFormHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `https://crud-app-7c3d.onrender.com/api/v1/users/create`,
-        user
-      );
+      const res = await axios.post(`${BASE_URL}api/v1/users/create`, user);
       console.log(res.data);
       toast.success(res.data.message, { position: "top-center" });
       navigate("/");
