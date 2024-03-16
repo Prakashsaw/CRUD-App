@@ -59,9 +59,17 @@
   background: green;
 }
 
-.edit:hover {
+.actionButtons .view {
+  background: blue;
+}
+
+.actionButtons .edit:hover {
   background: rgb(3, 75, 3);
 }
-.delete:hover {
+.actionButtons .delete:hover {
   background: rgb(177, 6, 6);
+}
+
+.actionButtons .view:hover {
+  background: rgb(6, 6, 177);
 }
