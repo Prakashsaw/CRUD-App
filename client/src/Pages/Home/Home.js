@@ -11,7 +11,7 @@ const Home = () => {
           <Link to={"/login"}>Login</Link>
         </button>
         <button>
-          <Link to={"/register"}>Sign Up</Link>
+          <Link to={"/sign-up/send-otp-for-email-verification"}>Sign Up</Link>
         </button>
       </div>
     </>

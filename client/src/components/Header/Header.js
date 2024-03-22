@@ -45,7 +45,9 @@ const Header = () => {
                   </li>
                   <li>
                     <div>
-                      <NavLink to="/register">SignUp</NavLink>
+                      <NavLink to="/sign-up/send-otp-for-email-verification">
+                        SignUp
+                      </NavLink>
                     </div>
                   </li>
                 </>

@@ -1,29 +1,26 @@
 import React, { useState } from "react";
-import "./Register.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import "./ForgotPassword.css";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../../utils/baseURL";
+import { ToastContainer, toast } from "react-toastify";
 import {
   EyeFilled,
   EyeInvisibleFilled,
   LoadingOutlined,
 } from "@ant-design/icons";
-import { BASE_URL } from "../../utils/baseURL";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import Header from "../../components/Header/Header";
-const Register = () => {
-  const params = useParams();
-  const email = params.email;
-
+const ResetPassword = () => {
   const [user, setUser] = useState({
-    name: "",
-    email: email,
-    phone: "",
     password: "",
     confirmPassword: "",
   });
-
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const params = useParams();
+  const id = params.id;
+  const token = params.token;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,31 +29,16 @@ const Register = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    console.log(user);
     try {
-      // Validate input fields
-      if (
-        !user.name ||
-        !user.email ||
-        !user.password ||
-        !user.confirmPassword
-      ) {
-        return toast.error("All fields marked with * are required", {
-          position: "bottom-right",
-        });
-      }
-      // If email is not valid, show error message
-      if (!user.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
-        return toast.error("Invalid email", { position: "bottom-right" });
-      }
       if (!user.password) {
-        return toast.error("Create password field is required", {
+        return toast.error("New password is required", {
           position: "bottom-right",
         });
       }
-      // Password length should be greater than 6
       if (user.password.length < 6) {
         return toast.error(
-          "Password should be greater than 6 character length.",
+          "New password should be greater than 6 character length ",
           {
             position: "bottom-right",
           }
@@ -75,21 +57,23 @@ const Register = () => {
       }
 
       if (!user.confirmPassword || user.password !== user.confirmPassword) {
-        return toast.error("Password and confirm password should be same", {
-          position: "bottom-right",
-        });
+        return toast.error(
+          "New password and confirm new password should be same",
+          {
+            position: "bottom-right",
+          }
+        );
       }
       setLoading(true);
       // API call
       const response = await axios.post(
-        `${BASE_URL}/api/v1/user-auth/register`,
+        `${BASE_URL}/api/v1/user-auth/reset-password/${id}/${token}`,
         user
       );
-      console.log(response);
       setLoading(false);
       toast.success(response.data.message, { position: "bottom-right" });
       setTimeout(() => {
-        navigate("/login");
+        navigate("/password-reset-successfully");
       }, 2000);
     } catch (err) {
       setLoading(false);
@@ -121,53 +105,14 @@ const Register = () => {
       setShow2(false);
     }
   };
+
   return (
     <>
       <Header />
-      <div className="register-container">
-        <div className="register-page">
-          <h2>Complete Sign Up</h2>
-          <form className="register-form">
-            <div className="input-field">
-              <input
-                type="text"
-                name="email"
-                value={email}
-                id="email"
-                required
-                spellCheck="false"
-                autoComplete="off"
-                // onChange={handleChange}
-                disabled={true}
-                style={{ cursor: "not-allowed" }}
-              />
-              {/* <label>Email</label> */}
-            </div>
-            <div className="input-field">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                required
-                spellCheck="false"
-                autoComplete="off"
-                onChange={handleChange}
-              />
-              <label>Name</label>
-            </div>
-
-            <div className="input-field">
-              <input
-                type="number"
-                name="phone"
-                id="phone"
-                required
-                spellCheck="false"
-                autoComplete="off"
-                onChange={handleChange}
-              />
-              <label>Phone Number(optional)</label>
-            </div>
+      <div className="forgot-password-container">
+        <div className="forgot-password-page">
+          <h2>Reset Password</h2>
+          <form className="forgot-password-form">
             <div className="input-field">
               <input
                 type={type1}
@@ -178,7 +123,7 @@ const Register = () => {
                 autoComplete="off"
                 onChange={handleChange}
               />
-              <label>Create Password</label>
+              <label>Create New Password</label>
               <span className="show-hide-pass-icon" onClick={handleToggle1}>
                 {show1 ? (
                   <EyeFilled style={{ fontSize: 25 }} />
@@ -197,7 +142,7 @@ const Register = () => {
                 autoComplete="off"
                 onChange={handleChange}
               />
-              <label>Confirm Password</label>
+              <label>Confirm New Password</label>
               <span className="show-hide-pass-icon" onClick={handleToggle2}>
                 {show2 ? (
                   <EyeFilled style={{ fontSize: 25 }} />
@@ -206,14 +151,11 @@ const Register = () => {
                 )}
               </span>
             </div>
+
             <div className="submit-button">
               <button type="submit" onClick={handleFormSubmit}>
                 {loading ? <LoadingOutlined /> : "Submit"}
               </button>
-            </div>
-            <div className="links">
-              Already have an account?
-              <Link to="/login">Login</Link>
             </div>
           </form>
         </div>
@@ -223,4 +165,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default ResetPassword;
