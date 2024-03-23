@@ -14,17 +14,25 @@ import ResetPasswordSuccess from "./Pages/ForgotPassword/ResetPasswordSuccess";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import SendOTPForUserEmailVerification from "./Pages/VerifyUserEmail/SendOTPForUserEmailVerification";
 import VerifyOTPForUserEmailVerification from "./Pages/VerifyUserEmail/VerifyOTPForUserEmailVerification";
+import ViewUserDetails from "./components/ViewUserDetails/ViewUserDetails";
 
 function App() {
   const route = createBrowserRouter([
     { path: "/", element: <Home /> },
-    { path: "/sign-up/send-otp-for-email-verification", element: <SendOTPForUserEmailVerification /> },
-    {path: "/sign-up/verify-email-through-otp/:id", element: <VerifyOTPForUserEmailVerification />},
+    {
+      path: "/sign-up/send-otp-for-email-verification",
+      element: <SendOTPForUserEmailVerification />,
+    },
+    {
+      path: "/sign-up/verify-email-through-otp/:id",
+      element: <VerifyOTPForUserEmailVerification />,
+    },
     { path: "/login", element: <Login /> },
     { path: "/complete-sign-up/register/:email", element: <Register /> },
 
     { path: "/get-all-user", element: <GetUser /> },
     { path: "/add-user", element: <AddUser /> },
+    { path: "/get-one-user/:id", element: <ViewUserDetails /> },
     { path: "/edit-user/:id", element: <UpdateUser /> },
 
     { path: "/forgot-password", element: <ForgotPassword /> },
