@@ -5,8 +5,6 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/baseURL";
 import { ToastContainer, toast } from "react-toastify";
 import {
-  EyeFilled,
-  EyeInvisibleFilled,
   LoadingOutlined,
 } from "@ant-design/icons";
 import Header from "../../components/Header/Header";

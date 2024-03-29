@@ -8,10 +8,10 @@ const Home = () => {
       <div className="home-container">
         <h1>Home page.</h1>
         <button>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/sign-in"}>Login</Link>
         </button>
         <button>
-          <Link to={"/sign-up/send-otp-for-email-verification"}>Sign Up</Link>
+          <Link to={"/sign-up"}>Sign Up</Link>
         </button>
       </div>
     </>
