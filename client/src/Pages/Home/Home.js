@@ -8,7 +8,7 @@ const Home = () => {
       <div className="home-container">
         <h1>Home page.</h1>
         <button>
-          <Link to={"/sign-in"}>Login</Link>
+          <Link to={"/sign-in"}>Sign In</Link>
         </button>
         <button>
           <Link to={"/sign-up"}>Sign Up</Link>
