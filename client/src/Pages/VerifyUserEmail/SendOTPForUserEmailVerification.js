@@ -77,7 +77,7 @@ const SendOTPForUserEmailVerification = () => {
             </div>
             <div className="links">
               Already have an account?
-              <Link to="/login">Login</Link>
+              <Link to="/sign-in">SignIn</Link>
             </div>
           </form>
         </div>

@@ -78,6 +78,9 @@ const VerifyOTPForUserEmailVerification = () => {
                 {loading ? <LoadingOutlined /> : "Verify OTP"}
               </button>
             </div>
+            <div className="links">
+              <Link to="/sign-up/sign-up-with-email">Resend OTP</Link>
+            </div>
           </form>
         </div>
         <ToastContainer />

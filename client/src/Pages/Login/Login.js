@@ -126,7 +126,7 @@ const Login = () => {
                 </div>
                 <div className="links">
                   Don't have an account?
-                  <Link to="/sign-up/send-otp-for-email-verification">
+                  <Link to="/sign-up">
                     SignUp
                   </Link>
                 </div>
@@ -177,7 +177,7 @@ const Login = () => {
                 </div>
                 <div className="links">
                   Don't have an account?
-                  <Link to="/sign-up/send-otp-for-email-verification">
+                  <Link to="/sign-up">
                     SignUp
                   </Link>
                 </div>

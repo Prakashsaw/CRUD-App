@@ -38,14 +38,14 @@ const Header = () => {
                   </li>
                   <li>
                     <div>
-                      <NavLink to="/login" style={{ marginLeft: 125 }}>
-                        Login
+                      <NavLink to="/sign-in" style={{ marginLeft: 125 }}>
+                        SignIn
                       </NavLink>
                     </div>
                   </li>
                   <li>
                     <div>
-                      <NavLink to="/sign-up/send-otp-for-email-verification">
+                      <NavLink to="/sign-up">
                         SignUp
                       </NavLink>
                     </div>

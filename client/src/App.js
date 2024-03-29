@@ -15,19 +15,38 @@ import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import SendOTPForUserEmailVerification from "./Pages/VerifyUserEmail/SendOTPForUserEmailVerification";
 import VerifyOTPForUserEmailVerification from "./Pages/VerifyUserEmail/VerifyOTPForUserEmailVerification";
 import ViewUserDetails from "./components/ViewUserDetails/ViewUserDetails";
-
+import SocialMediaLogin from "./Pages/SocialMediaLogin/SocialMediaLogin";
+import SocialMediaSignUp from "./Pages/SocialMediaSignUp/SocialMediaSignUp";
+import SignUpWithGoogle from "./Pages/SocialMediaSignUp/SignUpWithGoogle";
+import SignUpWithFacebook from "./Pages/SocialMediaSignUp/SignUpWithFacebook";
+import SignUpWithGitHub from "./Pages/SocialMediaSignUp/SignUpWithGitHub";
+import SignUpWithLinkedIn from "./Pages/SocialMediaSignUp/SignUpWithLinkedIn";
+import SignInWithGoogle from "./Pages/SocialMediaLogin/SignInWithGoogle";
+import SignInWithFacebook from "./Pages/SocialMediaLogin/SignInWithFacebook";
+import SignInWithGitHub from "./Pages/SocialMediaLogin/SignInWithGitHub";
+import SignInWithLinkedIn from "./Pages/SocialMediaLogin/SignInWithLinkedIn";
 function App() {
   const route = createBrowserRouter([
     { path: "/", element: <Home /> },
+    { path: "/sign-in", element: <SocialMediaLogin /> },
+    { path: "/sign-up", element: <SocialMediaSignUp /> },
+    { path: "/sign-up-with-google", element: <SignUpWithGoogle /> },
+    { path: "/sign-up-with-facebook", element: <SignUpWithFacebook /> },
+    { path: "/sign-up-with-github", element: <SignUpWithGitHub /> },
+    { path: "/sign-up-with-linkedin", element: <SignUpWithLinkedIn /> },
     {
-      path: "/sign-up/send-otp-for-email-verification",
+      path: "/sign-up/sign-up-with-email",
       element: <SendOTPForUserEmailVerification />,
     },
     {
       path: "/sign-up/verify-email-through-otp/:id",
       element: <VerifyOTPForUserEmailVerification />,
     },
-    { path: "/login", element: <Login /> },
+    { path: "/sign-in-with-google", element: <SignInWithGoogle /> },
+    { path: "/sign-in-with-facebook", element: <SignInWithFacebook /> },
+    { path: "/sign-in-with-github", element: <SignInWithGitHub /> },
+    { path: "/sign-in-with-linkedin", element: <SignInWithLinkedIn /> },
+    { path: "/login-with-email", element: <Login /> },
     { path: "/complete-sign-up/register/:email", element: <Register /> },
 
     { path: "/get-all-user", element: <GetUser /> },

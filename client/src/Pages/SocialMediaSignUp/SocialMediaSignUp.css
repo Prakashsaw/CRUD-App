@@ -1,0 +1,120 @@
+.social-media-signup-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.social-media-signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  box-shadow: 1px 1px 5px #344265;
+  border-radius: 5px;
+  background: white;
+  padding: 30px;
+  width: 400px;
+}
+
+.social-media-signup-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: purple;
+  text-decoration: underline;
+}
+
+.social-media-signup-page .social-media-signup-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-media-signup-page .social-media-signup-buttons button {
+  width: 350px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 0 15px;
+  border: 2px solid #344265;
+  background: transparent;
+  color: #344265;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.social-media-signup-page .social-media-signup-buttons button:hover {
+  background: #344265;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button:first-child {
+  margin-top: 0;
+}
+
+.social-media-signup-page .social-media-signup-buttons button img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.social-media-signup-page .social-media-signup-buttons button span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.social-media-signup-page .social-media-signup-buttons button.google {
+  background: #db4437;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button.google:hover {
+  background: #344265;
+}
+
+.social-media-signup-page .social-media-signup-buttons button.facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button.facebook:hover {
+  background: #344265;
+}
+
+.social-media-signup-page .social-media-signup-buttons button.github {
+  background: #333;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button.github:hover {
+  background: #344265;
+}
+
+.social-media-signup-page .social-media-signup-buttons button.linkedin {
+  background: #0077b5;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button.linkedin:hover {
+  background: #344265;
+}
+
+.social-media-signup-page .social-media-signup-buttons button.email {
+  background: black;
+  color: white;
+}
+
+.social-media-signup-page .social-media-signup-buttons
+  button.email:hover {
+  background: #344265;
+}
