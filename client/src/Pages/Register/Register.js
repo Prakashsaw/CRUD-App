@@ -23,6 +23,7 @@ const Register = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [pic, setPic] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -79,17 +80,42 @@ const Register = () => {
           position: "bottom-right",
         });
       }
+
+      if (!pic) {
+        return toast.error("Please select an image", {
+          position: "bottom-right",
+        });
+      }
+
+      const formData = new FormData();
+      formData.append("name", user.name);
+      formData.append("email", user.email);
+      formData.append("phone", user.phone);
+      formData.append("password", user.password);
+      formData.append("confirmPassword", user.confirmPassword);
+      formData.append("picture", pic);
+
+      // console.log("formData", formData);
+      console.log("FormDat: ", Object.fromEntries(formData));
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
       setLoading(true);
       // API call
       const response = await axios.post(
         `${BASE_URL}/api/v1/user-auth/register`,
-        user
+        formData,
+        config
       );
       console.log(response);
       setLoading(false);
       toast.success(response.data.message, { position: "bottom-right" });
       setTimeout(() => {
-        navigate("/login");
+        navigate("/login-with-email");
       }, 2000);
     } catch (err) {
       setLoading(false);
@@ -153,7 +179,7 @@ const Register = () => {
                 autoComplete="off"
                 onChange={handleChange}
               />
-              <label>Name</label>
+              <label>* Name</label>
             </div>
 
             <div className="input-field">
@@ -168,6 +194,7 @@ const Register = () => {
               />
               <label>Phone Number(optional)</label>
             </div>
+
             <div className="input-field">
               <input
                 type={type1}
@@ -178,7 +205,7 @@ const Register = () => {
                 autoComplete="off"
                 onChange={handleChange}
               />
-              <label>Create Password</label>
+              <label>* Create Password</label>
               <span className="show-hide-pass-icon" onClick={handleToggle1}>
                 {show1 ? (
                   <EyeFilled style={{ fontSize: 25 }} />
@@ -197,7 +224,7 @@ const Register = () => {
                 autoComplete="off"
                 onChange={handleChange}
               />
-              <label>Confirm Password</label>
+              <label>* Confirm Password</label>
               <span className="show-hide-pass-icon" onClick={handleToggle2}>
                 {show2 ? (
                   <EyeFilled style={{ fontSize: 25 }} />
@@ -205,6 +232,18 @@ const Register = () => {
                   <EyeInvisibleFilled style={{ fontSize: 25 }} />
                 )}
               </span>
+            </div>
+            <div className="image-input-field">
+              <label>Choose Image</label>
+              <input
+                type="file"
+                name="picture"
+                id="picture"
+                required
+                spellCheck="false"
+                autoComplete="off"
+                onChange={(e) => setPic(e.target.files[0])}
+              />
             </div>
             <div className="submit-button">
               <button type="submit" onClick={handleFormSubmit}>

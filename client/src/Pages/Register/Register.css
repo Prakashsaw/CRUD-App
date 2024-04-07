@@ -26,6 +26,12 @@
   position: relative;
 }
 
+.register-container .register-page .image-input-field {
+  margin-top: 20px;
+  position: relative;
+}
+
+
 .register-container .register-page .input-field input {
   width: 350px;
   height: 50px;
@@ -37,6 +43,15 @@
   color: #344265;
   outline: none;
 }
+
+.register-container .register-page .image-input-field input {
+  border: 0;
+  background: transparent;
+  color: #344265;
+  outline: none;
+  margin-left: 20px;
+}
+
 .register-container .register-page .input-field label {
   position: absolute;
   top: 50%;

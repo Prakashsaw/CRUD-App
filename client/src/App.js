@@ -1,4 +1,3 @@
-import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GetUser from "./components/getuser/GetUser";
 import AddUser from "./components/adduser/AddUser";
